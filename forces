@@ -1,0 +1,13 @@
+// Calculates forces and momentum of the fluid flow over a surface.
+// Forces and momentum have the solid point of view: forces that the solid SUFFERS.
+
+forcesOverPatch
+{
+    type        forces;
+    libs ("libforces.so");        
+    patches     (fan);            //Patches to calculate forces and torques
+    rho rhoInf;                   //Mandatory for incompressible.
+    rhoInf 1.2;
+    CofR (0 0 0);                 //Point of origin of momentum
+    log no;
+}

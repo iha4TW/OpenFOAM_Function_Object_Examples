@@ -1,0 +1,35 @@
+// Calculates pressure difference between outlet (minuend) and inlet (substrahend).
+
+pressureDiffOutletMinusInlet
+{
+    type            fieldValueDelta;
+    libs ("libfieldFunctionObjects.so");
+    operation       subtract;
+
+    region1
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        log             false;
+        writeControl    writeTime; //timeStep;          //If written over timestep or only when flow data is stored.
+        writeFields     false;
+        regionType      patch;
+        name            outlet;                         //Name of the minuend patch.
+        operation       weightedAreaAverage;
+        fields          ( p );
+    }
+
+    region2
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        log             false;
+        writeControl    writeTime; //timeStep;          //Must be the same than above entry.
+        writeFields     false;
+        regionType      patch;
+        name            inlet;                          //Name of the substrahend patch.
+        operation       weightedAreaAverage;
+        fields          ( p );
+      }
+
+}
