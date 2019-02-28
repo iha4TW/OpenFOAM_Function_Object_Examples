@@ -1,0 +1,10 @@
+yPlus
+{
+  type            yPlus;
+  libs            ("libfieldFunctionObjects.so");
+
+  executeControl  writeTime;                    //
+  writeControl    writeTime;                    // Do not use timeStep, it will create a field folder each timestep without the corresponding U,p fields
+  //region          bottomAir;                  //This is for chtMultiRegion solvers.
+  patch           walls;                        //Name of the patch where yPlus will be calculated
+}
