@@ -1,3 +1,5 @@
+// Calculates y+ in the designated patch
+
 yPlus
 {
   type            yPlus;
